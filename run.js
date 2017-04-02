@@ -12,7 +12,7 @@ const boardDownloader = require('./board_downloader')
 const targetDownloader = require('./target_downloader')
 const boardDiffer = require('./board_differ')
 
-const users = require('./users')
+const users = require('./users.json')
 const cookies = require('./cookies')
 const queues = require('./queues')
 
