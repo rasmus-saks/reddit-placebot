@@ -16,7 +16,7 @@ You need to have [NodeJS](https://nodejs.org) installed.
 3. Paki see lahti kaustaks oma desktopil näiteks
 4. Mine sinna kausta sisse ja kopeeri users.example.json ja nimeta see ümber "users.json"-iks
 5. Muuda users.json faili nii, et seal oleksid sees kasutajanimi ja parool, kui sul on üks konto, tulemus peaks olema selline:  
-{"kasutajanimi":"parool}  
+{"kasutajanimi":"parool"}  
 kui sul on mitu kasutajat (eriti kõva)  
 {"kasutaja1":"parool1","kasutaja2:parool2","kasutaja3":"parool3"} jne  
 MÄRKUS: Vaata, et selle faili nimi kindlalt oleks users.json ja mitte users.json.txt, sest see võib väga kergelt juhtuda. 
