@@ -3,27 +3,13 @@
 This is a bot based on [Reddit Place Bot](https://github.com/Zequez/placebot-argentina-target) for the /r/eesti drawing on /r/place.
 
 
-## Installation
+## Getting it to run
 
-You need to have [NodeJS installed](https://nodejs.org)
-
+You need to have [NodeJS](https://nodejs.org) installed.  
+Next, download [the repository](https://github.com/rasmussaks/reddit-placebot/archive/master.zip) and extract it into a folder.
+Copy the file `users.example.json` to `users.json` and add all your accounts and their passwords there.
+Now run the following commands in the folder:
 ```
-git clone https://github.com/zequez/reddit-place-bot
-cd reddit-place-bot
 npm install
+npm run start
 ```
-
-## Configuration
-
-Change `users.example.json` to `users.json` and add your username and password
-of your account and all your throwaways.
-
-
-## Usage
-
-```
-  npm run start
-```
-
-It'll keep keep drawing forever and if it can't draw anymore it's gonna
-wait until something breaks and fix it.
