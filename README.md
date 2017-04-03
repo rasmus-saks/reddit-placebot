@@ -12,6 +12,7 @@ Features:
 - Anti-multi-account-collision
 - Randomized placement over specified area
 - Improved fault tolerance (won't crash if left running overnight)
+- Does not suffer from reddit updating
 
 ## Using it for your own project
 
