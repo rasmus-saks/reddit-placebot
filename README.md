@@ -37,3 +37,5 @@ MÄRKUS: Vaata, et selle faili nimi kindlalt oleks users.json ja mitte users.jso
 7. ???
 8. Kasum
 
+## Common issues
+1. "Modash undefined" - your username or password is wrong for at least one account
