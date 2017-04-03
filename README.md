@@ -2,7 +2,7 @@
 
 The most advanced reddit place-bot currently in existence.
 
-This is a bot based on [Reddit Place Bot](https://github.com/Zequez/placebot-argentina-target) for the /r/eesti drawing on /r/place.
+This is a bot based on [Reddit Place Bot](https://github.com/Zequez/placebot-argentina-target) but changed and SIGNIFICANTLY UPGRADED for the /r/eesti drawing on /r/place.
 
 
 ## Features
@@ -37,3 +37,5 @@ MÄRKUS: Vaata, et selle faili nimi kindlalt oleks users.json ja mitte users.jso
 7. ???
 8. Kasum
 
+## Common issues
+1. "Modash undefined" - your username or password is wrong for at least one account
