@@ -78,7 +78,7 @@ function userRun(user) {
 function userPaint(user, x, y, color) {
   if (!cookies[user]) return authenticateUser(user);
 
-  console.log('Painting ', {x: x, y: y, color: color})
+  console.log('Painting ', {x: x, y: y, color: color});
 
   return axios({
     method: 'POST',
@@ -122,14 +122,14 @@ function startQueue() {
   let nextOneIn = printCountdowns();
   authenticateAll();
 
-  let ran = false
+  let ran = false;
   for (let user in queues) {
     if (!queues.hasOwnProperty(user)) continue;
 
     if (queues[user] < new Date().valueOf()) {
       ran = true;
       userRun(user).then(() => {
-        startQueue()
+        setTimeout(startQueue, 3000);
       });
       break
     }
