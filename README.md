@@ -1,7 +1,20 @@
 # Reddit Place Bot
 
+The most advanced reddit place-bot currently in existence.
+
 This is a bot based on [Reddit Place Bot](https://github.com/Zequez/placebot-argentina-target) for the /r/eesti drawing on /r/place.
 
+
+## Features
+Features:
+- Multi account support
+- No open browser required
+- Anti-multi-account-collision
+- Randomized placement over specified area
+
+## Using it for your own project
+
+To use this bot for your project, just edit the path in `config.js` to point to your own image.
 
 ## Getting it to run
 

@@ -5,11 +5,12 @@ const axios = require('axios');
 if (!fs.existsSync('./cookies.json')) fs.writeFileSync('cookies.json', '{}');
 if (!fs.existsSync('./queues.json')) fs.writeFileSync('queues.json', '{}');
 
-const config = require('./config');
+global.config = require('./config');
 
 const boardDownloader = require('./board_downloader');
 const targetDownloader = require('./target_downloader');
 const boardDiffer = require('./board_differ');
+const hashChecker = require('./hash_checker');
 
 const users = require('./users.json');
 const cookies = require('./cookies');
@@ -24,7 +25,10 @@ startQueue();
 function authenticateAll() {
   for (let user in users) {
     if (users.hasOwnProperty(user) && !cookies[user]) {
-      authenticateUser(user)
+      authenticateUser(user).catch(err => {
+        console.error("Caught an error when authenticating user");
+        console.error(err.toString());
+      });
     }
   }
 }
@@ -42,12 +46,14 @@ function authenticateUser(user) {
   }))
     .then((response) => {
       let modhash = response.data.json.data.modhash;
-      let cookie = response.headers['set-cookie'].map((c) => c.split(';')[0]).join('; ');
+      if (hashChecker.checkModhash(modhash)) {
+        let cookie = response.headers['set-cookie'].map((c) => c.split(';')[0]).join('; ');
 
-      cookies[user] = cookies[user] || {};
-      cookies[user].cookie = cookie;
-      cookies[user].modhash = modhash;
-      saveCookieJar();
+        cookies[user] = cookies[user] || {};
+        cookies[user].cookie = cookie;
+        cookies[user].modhash = modhash;
+        saveCookieJar();
+      }
     })
 }
 
@@ -79,10 +85,10 @@ function userPaint(user, x, y, color) {
   if (!cookies[user]) return authenticateUser(user);
 
   console.log('Painting ', {x: x, y: y, color: color});
-
+  if (!hashChecker.checkModhash(cookies[user].modhash)) throw new Error("Invalid modhash!");
   return axios({
     method: 'POST',
-    url: config.DRAW_URL,
+    url: global.config.DRAW_URL,
     data: qs.stringify({
       x: x,
       y: y,
@@ -130,8 +136,12 @@ function startQueue() {
       ran = true;
       userRun(user).then(() => {
         setTimeout(startQueue, 3000);
+      }).catch(err => {
+        console.error("Caught an error when running user");
+        console.error(err.toString());
+        setTimeout(startQueue, 3000);
       });
-      break
+      break;
     }
   }
 

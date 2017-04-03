@@ -4,10 +4,10 @@ const axios = require('axios')
 const config = require('./config')
 
 function load () {
-  if (config.autoupdateRemoteTarget) {
-    return fromUrl(config.REMOTE_TARGET_URL)
+  if (global.config.autoupdateRemoteTarget) {
+    return fromUrl(global.config.REMOTE_TARGET_URL)
   } else {
-    return fromFile(config.TARGET_FILE)
+    return fromFile(global.config.TARGET_FILE)
   }
 }
 
@@ -19,7 +19,7 @@ function fromUrl (url) {
   return axios.get(url, {
     responseType: 'arraybuffer'
   }).then(function (response) {
-    fs.writeFileSync(config.TARGET_FILE, response.data)
+    fs.writeFileSync(global.config.TARGET_FILE, response.data)
     return response.data
   })
 }

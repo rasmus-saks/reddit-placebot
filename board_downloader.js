@@ -6,7 +6,7 @@ const config = require('./config')
 const colors = require('./colors')
 
 function load () {
-  return loadFromUrl(config.BOARD_URL)
+  return loadFromUrl(global.config.BOARD_URL)
 }
 
 function loadFromUrl (url) {
@@ -46,8 +46,8 @@ function saveAsBmp (buffer) {
   }
 
   return new Promise((resolve) => {
-    img.write(config.BOARD_FILE, function () {
-      resolve(fs.readFileSync(config.BOARD_FILE))
+    img.write(global.config.BOARD_FILE, function () {
+      resolve(fs.readFileSync(global.config.BOARD_FILE))
     })
   })
 }
