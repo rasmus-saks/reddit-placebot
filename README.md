@@ -11,6 +11,7 @@ Features:
 - No open browser required
 - Anti-multi-account-collision
 - Randomized placement over specified area
+- Improved fault tolerance (won't crash if left running overnight)
 
 ## Using it for your own project
 
