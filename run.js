@@ -147,7 +147,7 @@ function startQueue() {
 
   if (!ran) {
     if (nextOneIn <= 0) nextOneIn = 0;
-    console.log(`Next one in ${nextOneIn} seconds`);
+    console.log(`Next one in ${nextOneIn} milliseconds`);
     setTimeout(startQueue, Math.min(30, nextOneIn) * 1000 + 1000)
   }
 }
